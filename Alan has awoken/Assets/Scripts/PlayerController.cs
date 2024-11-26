@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody playerBody;
-    public 
+    public float MovementSpeed;
+    float xInput = 0;
+    float yInput = 0;
+    
     void Start()
     {
         Rigidbody playerBody = gameObject.GetComponent<Rigidbody>();
@@ -14,6 +17,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        xInput = Input.GetAxis("Horizontal");
+        yInput = Input.GetAxis("Vertical");
+
     }
 }
