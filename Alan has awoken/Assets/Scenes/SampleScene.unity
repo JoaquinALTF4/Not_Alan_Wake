@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58167519}
   m_LocalRotation: {x: -0, y: -0.7328394, z: -0, w: 0.68040174}
-  m_LocalPosition: {x: 2.075, y: -0.102, z: 0.309}
+  m_LocalPosition: {x: 1.784, y: -0.752, z: 0.307}
   m_LocalScale: {x: 1.0209006, y: 0.95581, z: 0.95581}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,7 +189,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 32.2
+  field of view: 34.9
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -312,7 +312,6 @@ GameObject:
   - component: {fileID: 778256648}
   - component: {fileID: 778256647}
   - component: {fileID: 778256646}
-  - component: {fileID: 778256645}
   - component: {fileID: 778256644}
   - component: {fileID: 778256643}
   - component: {fileID: 778256642}
@@ -336,6 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 778256644}
+  movementSpeed: 7
+  lookSpeed: 200
+  cameraDistance: 0
 --- !u!136 &778256643
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -366,20 +368,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!136 &778256645
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778256641}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &778256646
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -652,7 +640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439896085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.335, y: 0.7, z: 1.24}
+  m_LocalPosition: {x: 3.525, y: 1.957, z: 3.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
