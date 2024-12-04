@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Camera camera;
+    private Transform cameraRotationPoint;
     public Rigidbody playerBody;
     public float movementSpeed;
     public float lookSpeed;
@@ -24,9 +25,10 @@ public class PlayerController : MonoBehaviour
     {
         Rigidbody playerBody = GetComponent<Rigidbody>();
         camera = GetComponentInChildren<Camera>();
-        flashlight = transform.GetChild(0).gameObject;
+        flashlight = transform.GetChild(1).gameObject;
         cameraOffset = camera.transform.localPosition;
-        camera.transform.parent = null;
+        cameraRotationPoint = transform.GetChild(0);
+        cameraRotationPoint.transform.parent = null;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -34,8 +36,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Vertical");
+        PlayerMovement();
+
         xMouse = Input.GetAxisRaw("Mouse X");
         yMouse = Input.GetAxisRaw("Mouse Y");
         if(Input.GetKeyDown(KeyCode.F))
@@ -53,20 +55,26 @@ public class PlayerController : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation,-90,90);
 
 
-        camera.transform.rotation = Quaternion.Euler(
-          xRotation, yRotation, 0
+        cameraRotationPoint.transform.rotation = Quaternion.Euler(
+          0, yRotation + 90, xRotation
         );
         transform.rotation = Quaternion.Euler(
             0, yRotation, 0
         );
-        camera.transform.position = transform.position + cameraOffset;
-        Vector3 cameraTargetPosition = transform.position - (camera.transform.forward * cameraDistance);
+        cameraRotationPoint.transform.position = transform.position;
+        
+        //Vector3 cameraTargetPosition = transform.position - (camera.transform.forward * cameraDistance);
 
-        camera.transform.position = Vector3.Slerp(camera.transform.position, cameraTargetPosition,cameraMoveTime);
+        //camera.transform.position = Vector3.Slerp(camera.transform.position, cameraTargetPosition,cameraMoveTime);
         cameraMoveTime += Time.deltaTime;
 
 
 
+    }
+
+    void PlayerMovement(){
+        xInput = Input.GetAxis("Horizontal");
+        yInput = Input.GetAxis("Vertical");
     }
     void FixedUpdate()
     {
