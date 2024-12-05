@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     Debug.Log("This is Working");
 
     }
-   void LightOff()
+   void  LightOff()
    {
     flashlight.SetActive(false);
     lightOn = false;
